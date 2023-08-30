@@ -8,8 +8,9 @@ class Hormone(models.Model):
     def __str__(self):
         return f'{self.hormone_name}'
 
+
 class Record(models.Model):
-    record_date = models.DateTimeField()
+    record_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f'{self.record_date}'

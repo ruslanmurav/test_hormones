@@ -16,9 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from hormones.views import BaseView
+from hormones.views import BaseView, ImageServeView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', BaseView.as_view())
+    path('', BaseView.as_view()),
+    path('images/<str:filename>/', ImageServeView.as_view(), name='image_serve'),
 ]
+
+

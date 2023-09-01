@@ -1,12 +1,12 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Выбор гормонов</title>
+<title>Графики и фотографии</title>
 <link rel="stylesheet" href="{% static 'vendor/css/styles.css' %}">
+    <script src="{% static 'vendor/js/script.js' %}"></script>
 </head>
 <body>
   <div class="container">
@@ -15,15 +15,25 @@
       {% csrf_token %}
       <div class="hormone-slider">
         {% for hormone in hormones %}
-        <label for="{{ hormone.id }}">{{ hormone.hormone_name }}:</label>
-        <input type="range" id="{{ hormone.id }}" name="{{ hormone.id }}" min="1" max="100" value="50" oninput="updateOutput(this)">
-        <output for="{{ hormone.id }}" id="{{ hormone.id }}-output">50</output>
-        <p>{{ hormone.description }}</p>
+          <label for="{{ hormone.id }}">{{ hormone.hormone_name }}:</label>
+          <input type="range" id="{{ hormone.id }}" name="{{ hormone.id }}" min="1" max="100" value="50" oninput="updateOutput(this)">
+          <output for="{{ hormone.id }}" id="{{ hormone.id }}-output">50</output>
+          <p>{{ hormone.description }}</p>
         {% endfor %}
       </div>
       <button type="submit" id="submit-btn">Подтвердить</button>
     </form>
   </div>
-  <script src="{% static 'vendor/js/script.js' %}"></script>
+
+  <div class="graphs-container">
+    <h1>Мои графики</h1>
+    <div class="graphs">
+      {% for photo_name in photo_names %}
+        <div class="graph">
+          <img src="{% static photo_name %}" alt="График">
+        </div>
+      {% endfor %}
+    </div>
+  </div>
 </body>
 </html>

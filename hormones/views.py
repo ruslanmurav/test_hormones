@@ -53,8 +53,6 @@ class BaseView(TemplateView):
 
             plt.close()
 
-
-
         context['photo_names'] = photo_names
 
         return context

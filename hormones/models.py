@@ -18,7 +18,7 @@ class Record(models.Model):
 
 class RecordValue(models.Model):
     hormone = models.ForeignKey(to=Hormone, on_delete=models.CASCADE)
-    record = models.ForeignKey(to=Record, on_delete=models.CASCADE)
+    record = models.ForeignKey(to=Record, on_delete=models.CASCADE, null=True)
     value = models.IntegerField()
 
     def __str__(self):
